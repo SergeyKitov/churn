@@ -1,3 +1,5 @@
+.DELETE_ON_ERROR:
+
 RAW := data/raw/online_retail_II.xlsx
 INTERIM := data/interim/transactions.parquet
 
