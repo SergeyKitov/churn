@@ -1,5 +1,7 @@
 import zipfile
+from pathlib import Path
 
+import pandas as pd
 import requests
 
 from churn import config
@@ -26,3 +28,30 @@ def download_raw() -> None:
 
     if not config.RAW_XLSX.exists():
         raise FileNotFoundError(f"{config.RAW_XLSX} not found after unzip")
+
+
+def load_raw(path: Path) -> pd.DataFrame:
+    sheets = pd.read_excel(path, sheet_name=None)
+    df = pd.concat(sheets.values(), ignore_index=True)
+    return df
+
+
+def normalize(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    df = df.rename(
+        columns={
+            "Invoice": "invoice",
+            "StockCode": "stock_code",
+            "Description": "description",
+            "Quantity": "quantity",
+            "InvoiceDate": "invoice_date",
+            "Price": "price",
+            "Customer ID": "customer_id",
+            "Country": "country",
+        }
+    )
+    df["invoice"] = df["invoice"].astype("str")
+    df["stock_code"] = df["stock_code"].astype("str")
+    df["customer_id"] = df["customer_id"].astype("Int64")
+
+    return df
