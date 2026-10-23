@@ -1,7 +1,8 @@
-.PHONY: install lint format test data
-
 RAW := data/raw/online_retail_II.xlsx
 INTERIM := data/interim/transactions.parquet
+
+.PHONY: install lint format test data
+
 
 install:
 	uv sync
@@ -18,9 +19,10 @@ test:
 	uv run pytest
 
 data: $(INTERIM)
-	$(RAW):
-		uv run python -m churn.data download
-	
-	$(INTERIM): $(RAW) src/churn/data.py src/churn/config.py
-		uv run python -m churn.data build
+
+$(RAW):
+	uv run python -m churn.data download
+
+$(INTERIM): $(RAW) src/churn/data.py src/churn/config.py
+	uv run python -m churn.data build
 
