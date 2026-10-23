@@ -1,7 +1,7 @@
 [project]
 name = "churn"
 version = "0.1.0"
-description = "Add your description here"
+description = "The service answers the manager’s one question: which client to retain tomorrow in order to save the most money."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []

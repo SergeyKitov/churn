@@ -81,7 +81,7 @@ RFM-сегменты нужны для EDA и как понятный бизне
 
 | Слой | Инструменты |
 | --- | --- |
-| Окружение | Python 3.11+, uv, ruff, pytest, pre-commit, Makefile |
+| Окружение | Python 3.13, uv, ruff, pytest, pre-commit, Makefile |
 | Данные и признаки | pandas, DuckDB, parquet |
 | Модели | scikit-learn (Pipeline, LogisticRegression), LightGBM, Optuna |
 | Калибровка и метрики | sklearn.calibration, roc_auc_score, average_precision_score |
