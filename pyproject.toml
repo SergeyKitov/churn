@@ -4,8 +4,20 @@ version = "0.1.0"
 description = "The service answers the manager’s one question: which client to retain tomorrow in order to save the most money."
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "duckdb>=2.0.0",
+    "openpyxl>=3.1.5",
+    "pandas>=3.1.0",
+    "pyarrow>=26.0.0",
+]
 
 [build-system]
 requires = ["uv_build>=0.13.5,<0.14.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+    "pytest>=9.1.1",
+    "ruff>=0.17.2",
+]
